@@ -10,23 +10,33 @@
  * };
  */
 class Solution {
-private:
-    void inOrderTravel(vector<int>& answer, TreeNode* node){
-        if(node->left!=NULL){
-            inOrderTravel(answer, node->left);
-        }
-        answer.push_back(node->val);
-        if(node->right!=NULL){
-            inOrderTravel(answer, node->right);
-        }
-    }
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> answer;
-        if(root==NULL){
-            return answer;
+        vector<int> ans;
+        if(!root){
+            return ans;
         }
-        inOrderTravel(answer, root);
-        return answer;
+        stack<pair<TreeNode*,bool>> treeStack;
+        if(!root->left){
+            treeStack.push({root,true});
+        }
+        else{
+            treeStack.push({root,true});
+            treeStack.push({root->left,false});
+        }
+        while(!treeStack.empty()){
+            if(!treeStack.top().second&&treeStack.top().first->left){
+                treeStack.top().second = true;
+                treeStack.push({treeStack.top().first->left,false});
+                continue;
+            }
+            pair<TreeNode*,bool> temp = treeStack.top();
+            treeStack.pop();
+            ans.push_back(temp.first->val);
+            if(temp.first->right){
+                treeStack.push({temp.first->right,false});
+            }
+        }
+        return ans;
     }
 };
