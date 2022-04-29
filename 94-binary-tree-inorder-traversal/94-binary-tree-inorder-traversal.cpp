@@ -16,25 +16,22 @@ public:
         if(!root){
             return ans;
         }
-        stack<pair<TreeNode*,bool>> treeStack;
-        if(!root->left){
-            treeStack.push({root,true});
-        }
-        else{
-            treeStack.push({root,true});
-            treeStack.push({root->left,false});
-        }
-        while(!treeStack.empty()){
-            if(!treeStack.top().second&&treeStack.top().first->left){
-                treeStack.top().second = true;
-                treeStack.push({treeStack.top().first->left,false});
-                continue;
+        TreeNode* curr;
+        while(root){
+            curr = root;
+            if(curr->left){
+                curr = root->left;
+                while(curr->right){
+                    curr = curr->right;
+                }
+                TreeNode* temp = root->left;
+                curr->right = root;
+                root->left = nullptr;
+                root = temp;
             }
-            pair<TreeNode*,bool> temp = treeStack.top();
-            treeStack.pop();
-            ans.push_back(temp.first->val);
-            if(temp.first->right){
-                treeStack.push({temp.first->right,false});
+            else{
+                ans.push_back(root->val);
+                root = root->right;
             }
         }
         return ans;
