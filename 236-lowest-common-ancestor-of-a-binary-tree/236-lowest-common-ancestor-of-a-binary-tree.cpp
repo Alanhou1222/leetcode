@@ -29,7 +29,7 @@ public:
         }
         return root;
     }
-    bool findPath(vector<int>& arr,TreeNode* root, TreeNode* find, int position){
+    bool findPath(vector<int>& arr,TreeNode* &root, TreeNode* &find, int position){
         if(!root){
             return false;
         }
