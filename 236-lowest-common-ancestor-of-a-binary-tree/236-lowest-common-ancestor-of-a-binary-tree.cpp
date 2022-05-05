@@ -14,7 +14,8 @@ public:
         vector<int> qArr;
         findPath(pArr, root, p, -1);
         findPath(qArr, root, q, -1);
-        for(int i = 1; i < min(pArr.size(),qArr.size()); i++){
+        int run = min(pArr.size(),qArr.size());
+        for(int i = 1; i < run; i++){
             if(pArr[i] == qArr[i]){
                 if(pArr[i] ==0){
                     root = root->left;
