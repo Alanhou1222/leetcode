@@ -10,38 +10,15 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<int> pArr;
-        vector<int> qArr;
-        findPath(pArr, root, p, -1);
-        findPath(qArr, root, q, -1);
-        int run = min(pArr.size(),qArr.size());
-        for(int i = 1; i < run; i++){
-            if(pArr[i] == qArr[i]){
-                if(pArr[i] == 0){
-                    root = root->left;
-                }
-                else{
-                    root = root->right;
-                }
-            }
-            else{
-                break;
-            }
+        if(root == p || root == q || root == nullptr){
+            return root;
         }
-        return root;
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        if(left && right){
+            return root;
+        }
+        return left ? left:right;
     }
-    bool findPath(vector<int>& arr,TreeNode* &root, TreeNode* &find, int position){
-        if(!root){
-            return false;
-        }
-        arr.push_back(position);
-        if(root->val == find->val){
-            return true;
-        }
-        if(findPath(arr, root->left, find, 0)||findPath(arr, root->right, find, 1)){
-            return true;
-        }
-        arr.pop_back();
-        return false;
-    }
+    
 };
