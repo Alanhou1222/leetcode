@@ -17,7 +17,7 @@ public:
         int run = min(pArr.size(),qArr.size());
         for(int i = 1; i < run; i++){
             if(pArr[i] == qArr[i]){
-                if(pArr[i] ==0){
+                if(pArr[i] == 0){
                     root = root->left;
                 }
                 else{
