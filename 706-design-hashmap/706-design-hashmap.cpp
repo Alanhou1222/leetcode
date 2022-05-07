@@ -1,20 +1,20 @@
 class MyHashMap {
-    unordered_map<int, int> data;
+    vector<int> data;
 public:
-    MyHashMap() {
+    MyHashMap(): data(1000001,-1) {
         
     }
     
     void put(int key, int value) {
-        data[key] = value+1;
+        data[key] = value;
     }
     
     int get(int key) {
-        return data[key]-1;
+        return data[key];
     }
     
     void remove(int key) {
-        data[key] = 0;
+        data[key] = -1;
     }
 };
 
