@@ -5,25 +5,18 @@ public:
         int sum = 10000;
         unordered_map<string, int> restaurants;
         for(int i = 0; i < list1.size(); i++){
-            restaurants[list1[i]] += i+10000;
+            restaurants[list1[i]] += i+1;
         }
         for(int i = 0; i < list2.size(); i++){
             if(restaurants[list2[i]] != 0){
-                restaurants[list2[i]] += i-10000;
-            }
-            else{
-                restaurants[list2[i]] += 10000;
-            }
-        }
-        for(pair<string, int> restaurant: restaurants){
-            cout<<restaurant.first<<" "<<restaurant.second<<endl;
-            if(restaurant.second < sum){
-                ans.clear();
-                sum = restaurant.second;
-                ans.push_back(restaurant.first);
-            }
-            else if(restaurant.second == sum){
-                ans.push_back(restaurant.first);
+                if(restaurants[list2[i]]+i < sum){
+                    ans.clear();
+                    sum = restaurants[list2[i]]+i;
+                    ans.push_back(list2[i]);
+                }
+                else if(restaurants[list2[i]]+i == sum){
+                    ans.push_back(list2[i]);
+                }
             }
         }
         return ans;
