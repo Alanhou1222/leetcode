@@ -8,7 +8,7 @@ public:
             restaurants[list1[i]] += i+1;
         }
         for(int i = 0; i < list2.size(); i++){
-            if(restaurants[list2[i]] != 0){
+            if(restaurants.find(list2[i])!=restaurants.end()){
                 if(restaurants[list2[i]]+i < sum){
                     ans.clear();
                     sum = restaurants[list2[i]]+i;
