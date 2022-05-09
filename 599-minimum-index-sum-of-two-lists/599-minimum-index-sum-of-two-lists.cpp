@@ -2,7 +2,6 @@ class Solution {
 public:
     vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
         vector<string> ans;
-        vector<string> empty;
         int sum = 10000;
         unordered_map<string, int> restaurants;
         for(int i = 0; i < list1.size(); i++){
@@ -19,7 +18,7 @@ public:
         for(pair<string, int> restaurant: restaurants){
             cout<<restaurant.first<<" "<<restaurant.second<<endl;
             if(restaurant.second < sum){
-                ans = empty;
+                ans.clear();
                 sum = restaurant.second;
                 ans.push_back(restaurant.first);
             }
