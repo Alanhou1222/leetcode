@@ -1,24 +1,21 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        int index = INT_MAX;
-        unordered_map<char,int> mp;
+        int ans = INT_MAX;
+        vector<int> charArray(26,-1);
         for(int i = 0; i<s.length(); i++){
-            if(mp.find(s[i])==mp.end()){
-                mp[s[i]] = i;
+            if(charArray[s[i]-'a'] == -1){
+                charArray[s[i]-'a'] = i;
             }
             else{
-                mp[s[i]] = -1;
+                charArray[s[i]-'a'] = -2;
             }
         }
-        for(pair<char,int> charPair:mp){
-            if(charPair.second != -1){
-                index = min(index, charPair.second);
+        for(int index:charArray){
+            if(index >= 0){
+                ans = min(ans, index);
             }
         }
-        if(index == INT_MAX){
-            return -1;
-        }
-        return index;
+        return ans == INT_MAX ? -1:ans;
     }
 };
