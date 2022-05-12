@@ -12,7 +12,6 @@ public:
         }
         for(int i = nums.size(); k; i--){
             while(!buckets[i].empty()){
-                cout<<buckets[i].back();
                 ans.push_back(buckets[i].back());
                 buckets[i].pop_back();
                 k--;
