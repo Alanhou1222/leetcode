@@ -1,19 +1,18 @@
 class Solution {
 public:
     int mySqrt(int x) {
-        long int longX = x;
         if(x==1){
             return 1;
         }
-        long int front = 1;
-        long int back = longX;
-        long int middle = longX/2;
+        int front = 1;
+        int back = x;
+        int middle = x/2;
         while(front <= back){
-            if(middle* middle < longX){
+            if(x/middle > middle){
                 front = middle +1;
                 middle = (front+back)/2;
             }
-            else if(middle* middle > longX){
+            else if(x/middle < middle){
                 back = middle -1;
                 middle = (front+back)/2;
             }
