@@ -4,7 +4,7 @@ public:
         vector<int> count(32,0);
         for(int num: candidates){
             for(int i = 0; i < 32; i++){
-                if(num %2 == 1){
+                if(num % 2 == 1){
                     count[i] ++;
                 }
                 if(num > 0){
