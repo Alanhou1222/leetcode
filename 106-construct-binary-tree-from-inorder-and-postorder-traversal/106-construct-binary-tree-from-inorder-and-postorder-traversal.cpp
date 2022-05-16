@@ -27,7 +27,6 @@ public:
         int rootVal = postorder.back();
         postorder.pop_back();
         TreeNode* root = new TreeNode(rootVal);
-        // cout<<startIndex<<" "<<endIndex<<" "<<rootVal<<endl;
         root->right = helper(inorder, postorder, inorderMap[rootVal]+1, endIndex, inorderMap);
         root->left = helper(inorder, postorder, startIndex, inorderMap[rootVal]-1, inorderMap);
         return root;
