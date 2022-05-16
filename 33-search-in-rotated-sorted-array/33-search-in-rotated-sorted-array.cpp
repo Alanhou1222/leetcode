@@ -15,7 +15,10 @@ public:
             middle = front + (last-front)/2;
         }
         int pivot = (nums[0] < nums[middle]) ? 0:middle;
-        if(target <= nums[n-1]){
+        if(target == nums[n-1]){
+            return n-1;
+        }
+        else if(target < nums[n-1]){
             front = pivot;
             last = n - 1;
         }
