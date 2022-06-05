@@ -1,8 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-        vector<int> empty;
-        vector<vector<int>> ans(numRows, empty);
+        vector<vector<int>> ans(numRows);
         for(int i = 0; i < numRows; i++){
             int count = 0;
             while(count < i){
