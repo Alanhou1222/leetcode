@@ -5,7 +5,7 @@ public:
         string ans = "";
         int len = strs[0].length();
         for(int i = 0; i < len; i++){
-            for(string str: strs){
+            for(string &str: strs){
                 if(str.length() <= index||str[index] != strs[0][index]){
                     return ans;
                 }
