@@ -4,10 +4,9 @@ public:
         int index = 0;
         string ans = "";
         int len = strs[0].length();
-        int strsSize = strs.size();
         for(int i = 0; i < len; i++){
-            for(int j = 0; j < strsSize; j++){
-                if(strs[j].length() <= index||strs[j][index] != strs[0][index]){
+            for(string str: strs){
+                if(str.length() <= index||str[index] != strs[0][index]){
                     return ans;
                 }
             }
