@@ -27,7 +27,7 @@ public:
         return -1;
     }
     
-    vector<string> turnBackOrForthByIndex(string& str, int index){
+    vector<string> turnBackOrForthByIndex(string& str, int& index){
         vector<string> vec(2,str);
         vec[0][index] = (vec[0][index] - '0' + 1) % 10 + '0';
         vec[1][index] = (vec[1][index] - '0' + 9) % 10 + '0';
