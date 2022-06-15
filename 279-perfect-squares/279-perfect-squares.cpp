@@ -1,44 +1,18 @@
-/* =========================*/
-/* https://jasonchiucc.com  */
-/* =========================*/
 class Solution {
 public:
     int numSquares(int n) {
-        
-        // Init
-        unordered_set<int>  visited;
-        queue<int>          q;
-        vector<int>         vec; 
-        int                 step = 1;
-        
-        for(int i = 1; i*i <= n; i++ )
-        {
-            if( i*i == n) return step;
-            q.push(i*i);
-            visited.insert(i*i); 
-            vec.push_back(i*i);
-        }                
-           
-        while( !q.empty() )
-        {
-            step += 1;
-            int size = q.size();
-            for (int i = 0 ; i < size; i++) 
-            {            
-                int num = q.front();                 
-                for (auto key : vec) 
-                { 
-                    int sum = num + key;
-                    if( sum == n) return step;
-                    if( sum < n && !visited.count(sum) )
-                    {                        
-                        q.push(sum);
-                        visited.insert(sum);                         
-                    }
-                } 
-                q.pop();
-            }
+        //vector for updating the dp array/values
+        vector<int> dp(n+1,INT_MAX);
+        //base case
+        dp[0]=0;
+        int count = 1;
+        while(count*count <= n) {
+        int sq = count*count;
+        for(int i = sq; i < n+1; i++) {
+            dp[i] = min(dp[i-sq] + 1,dp[i]);
         }
-        return -1;        
+        count++;
+    }
+    return dp[n];
     }
 };
