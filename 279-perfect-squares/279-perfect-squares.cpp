@@ -14,7 +14,7 @@ public:
             ans ++;
             int qSize = q.size();
             for(int i = 0; i < qSize; i++){
-                for(int square:squares){
+                for(int &square:squares){
                     int sum = q.front() + square;
                     if(sum == n) return ans;
                     else{
