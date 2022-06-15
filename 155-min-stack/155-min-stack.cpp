@@ -4,8 +4,9 @@ class MinStack {
         Node* next;
     };
     Node* last;
+    int minVal;
 public:
-    MinStack(): last(nullptr) {
+    MinStack(): last(nullptr), minVal(INT_MAX) {
     }
     
     void push(int val) {
@@ -13,9 +14,18 @@ public:
         last = new Node();
         last->next = temp;
         last->val = val;
+        minVal = min(minVal,val);
     }
     
     void pop() {
+        if(last->val == minVal){
+            Node* temp = last->next;
+            minVal = INT_MAX;
+            while(temp){
+                minVal = min(minVal,temp->val);
+                temp = temp->next;
+            }
+        }
         last = last->next;
     }
     
@@ -24,12 +34,6 @@ public:
     }
     
     int getMin() {
-        int minVal = INT_MAX;
-        Node* temp = last;
-        while(temp){
-            minVal = min(minVal,temp->val);
-            temp = temp->next;
-        }
         return minVal;
     }
 };
