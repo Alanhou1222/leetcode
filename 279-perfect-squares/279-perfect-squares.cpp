@@ -8,6 +8,7 @@ public:
         for(int i = 1; i*i <= n; i++){
             if(i*i == n) return ans;
             squares.push_back(i*i);
+            visited.insert(i*i);
             q.push(i*i);
         }
         while(!q.empty()){
