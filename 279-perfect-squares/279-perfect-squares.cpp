@@ -1,44 +1,32 @@
-/* =========================*/
-/* https://jasonchiucc.com  */
-/* =========================*/
 class Solution {
 public:
     int numSquares(int n) {
-        
-        // Init
-        unordered_set<int>  visited;
-        queue<int>          q;
-        vector<int>         vec; 
-        int                 step = 1;
-        
-        for(int i = 1; i*i <= n; i++ )
-        {
-            if( i*i == n) return step;
+        unordered_set<int> visited;
+        queue<int> q;
+        vector<int> squares;
+        int ans = 1;
+        for(int i = 1; i*i <= n; i++){
+            if(i*i == n) return ans;
+            squares.push_back(i*i);
             q.push(i*i);
-            visited.insert(i*i); 
-            vec.push_back(i*i);
-        }                
-           
-        while( !q.empty() )
-        {
-            step += 1;
-            int size = q.size();
-            for (int i = 0 ; i < size; i++) 
-            {            
-                int num = q.front();                 
-                for (auto key : vec) 
-                { 
-                    int sum = num + key;
-                    if( sum == n) return step;
-                    if( sum < n && !visited.count(sum) )
-                    {                        
-                        q.push(sum);
-                        visited.insert(sum);                         
+        }
+        while(!q.empty()){
+            ans ++;
+            int qSize = q.size();
+            for(int i = 0; i < qSize; i++){
+                for(int square:squares){
+                    int sum = q.front() + square;
+                    if(sum == n) return ans;
+                    else{
+                        if(visited.find(sum) == visited.end()){
+                            visited.insert(sum);
+                            q.push(sum);
+                        }
                     }
-                } 
+                }
                 q.pop();
             }
         }
-        return -1;        
+        return -1;
     }
 };
