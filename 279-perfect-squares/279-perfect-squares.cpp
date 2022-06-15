@@ -19,7 +19,7 @@ public:
                     int sum = q.front() + square;
                     if(sum == n) return ans;
                     else{
-                        if(visited.find(sum) == visited.end()){
+                        if(sum < n && !visited.count(sum)){
                             visited.insert(sum);
                             q.push(sum);
                         }
