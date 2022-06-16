@@ -23,3 +23,4 @@ public:
         clear(grid, row, column+1);
     }
 };
+
