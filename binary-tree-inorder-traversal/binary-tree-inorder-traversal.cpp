@@ -10,23 +10,30 @@
  * };
  */
 class Solution {
-private:
-    void inOrderTravel(vector<int>& answer, TreeNode* node){
-        if(node->left!=NULL){
-            inOrderTravel(answer, node->left);
-        }
-        answer.push_back(node->val);
-        if(node->right!=NULL){
-            inOrderTravel(answer, node->right);
-        }
-    }
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> answer;
-        if(root==NULL){
-            return answer;
+        vector<int> ans;
+        if(!root){
+            return ans;
         }
-        inOrderTravel(answer, root);
-        return answer;
+        TreeNode* curr;
+        while(root){
+            curr = root;
+            if(curr->left){
+                curr = root->left;
+                while(curr->right){
+                    curr = curr->right;
+                }
+                TreeNode* temp = root->left;
+                curr->right = root;
+                root->left = nullptr;
+                root = temp;
+            }
+            else{
+                ans.push_back(root->val);
+                root = root->right;
+            }
+        }
+        return ans;
     }
 };
