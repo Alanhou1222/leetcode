@@ -11,18 +11,19 @@ public:
         merge(nums,l,r);
     }
     void merge(vector<int>& nums, int l, int r){
-        vector<int> temp;
+        vector<int> temp(r-l+1);
         int m = l+(r-l)/2;
-        int l1 = l;
-        int l2 = m+1;
-        while(l1 <= m && l2 <= r){
-            if(nums[l1] < nums[l2]) temp.push_back(nums[l1++]);
-            else temp.push_back(nums[l2++]);
+        int i = l;
+        int j = m + 1;
+        int k = 0;
+        while(i <= m && j <= r){
+            if(nums[i] < nums[j]) temp[k++] = nums[i++];
+            else temp[k++] = nums[j++];
         }
-        while(l1 <= m) temp.push_back(nums[l1++]);
-        while(l2 <= r) temp.push_back(nums[l2++]);
-        for(int i = l; i <= r; i++){
-            nums[i] = temp[i-l];
+        while(i <= m) temp[k++] = nums[i++];
+        while(j <= r) temp[k++] = nums[j++];
+        for(int i = 0; i < k; i++){
+            nums[i+l] = temp[i];
         }
     }
 };
