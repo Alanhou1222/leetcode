@@ -4,10 +4,9 @@ public:
         if(nums.size() <= 1) return nums;
         vector<int> left(nums.begin(),nums.begin()+nums.size()/2);
         vector<int> right(nums.begin()+nums.size()/2,nums.end());
-        sortArray(left);
-        sortArray(right);
-        nums = mergeArray(left,right);
-        return nums;
+        left = sortArray(left);
+        right = sortArray(right);
+        return mergeArray(left,right);
     }
     vector<int> mergeArray(vector<int>& left, vector<int>& right){
         int leftIndex = 0, rightIndex = 0;
