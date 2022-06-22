@@ -14,21 +14,17 @@ public:
         vector<int> combine;
         while(leftIndex < left.size() && rightIndex < right.size()){
             if(left[leftIndex] < right[rightIndex]){
-                combine.push_back(left[leftIndex]);
-                leftIndex ++;
+                combine.push_back(left[leftIndex++]);
             }
             else{
-                combine.push_back(right[rightIndex]);
-                rightIndex ++;
+                combine.push_back(right[rightIndex++]);
             }
         }
         while(leftIndex < left.size()){
-            combine.push_back(left[leftIndex]);
-            leftIndex ++;
+            combine.push_back(left[leftIndex++]);
         }
         while(rightIndex < right.size()){
-            combine.push_back(right[rightIndex]);
-            rightIndex ++;
+            combine.push_back(right[rightIndex++]);
         }
         return combine;
     }
