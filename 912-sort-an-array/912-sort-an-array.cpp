@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> sortArray(vector<int>& nums) {
-        if(nums.size() == 1) return nums;
+        if(nums.size() <= 1) return nums;
         vector<int> left(nums.begin(),nums.begin()+nums.size()/2);
         vector<int> right(nums.begin()+nums.size()/2,nums.end());
         sortArray(left);
