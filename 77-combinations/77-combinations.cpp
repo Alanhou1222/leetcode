@@ -7,7 +7,7 @@ public:
         return ans;
     }
     
-    void backTrack(vector<vector<int>> &ans, vector<int> &cur, int next, int N, int K){
+    void backTrack(vector<vector<int>> &ans, vector<int> &cur, int next, int &N, int &K){
         for(int i = next; i <= N; i++){
             if(N - next >= (K - cur.size() - 1)){
                 cur.push_back(i);
