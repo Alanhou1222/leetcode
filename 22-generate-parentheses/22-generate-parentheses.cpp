@@ -8,7 +8,7 @@ public:
     
     void solve(int starts, int ends, int n, string s, vector<string> &ans){
         if(starts + ends == 2*n){
-            ans.push_back(s);
+            ans.push_back(move(s));
             return;
         } 
         if(starts < n) solve(starts+1, ends, n, s+"(", ans);
