@@ -12,7 +12,7 @@ public:
         for(int num: nums){
             if(set.find(num) == set.end()){
                 set.insert(num);
-                cur.push_back(num);
+                cur.push_back(move(num));
                 if(cur.size() == nums.size()){
                     ans.push_back(cur);
                 }
