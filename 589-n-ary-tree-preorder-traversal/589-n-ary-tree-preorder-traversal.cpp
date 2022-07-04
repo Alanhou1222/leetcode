@@ -24,7 +24,7 @@ vector<int> ans;
 void helper(Node* &root) {
     if(root){
         ans.push_back(root->val);
-        for(Node* &child:root->children){
+        for(auto &child:root->children){
             preorder(child);
         }
     }
