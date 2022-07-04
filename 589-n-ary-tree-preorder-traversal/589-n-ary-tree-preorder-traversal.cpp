@@ -21,15 +21,18 @@ public:
 class Solution {
     
 vector<int> ans;
-
+void helper(Node* &root) {
+    if(root){
+        ans.push_back(root->val);
+        for(Node* &child:root->children){
+            preorder(child);
+        }
+    }
+    return;
+}
 public:
     vector<int> preorder(Node* &root) {
-        if(root){
-            ans.push_back(root->val);
-            for(Node* &child:root->children){
-                preorder(child);
-            }
-        }
+        helper(root);
         return ans;
     }
 };
