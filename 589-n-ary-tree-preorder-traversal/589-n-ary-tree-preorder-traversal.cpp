@@ -23,7 +23,7 @@ class Solution {
 vector<int> ans;
 
 public:
-    vector<int> preorder(Node* root) {
+    vector<int> preorder(Node* &root) {
         if(root){
             ans.push_back(root->val);
             for(Node* &child:root->children){
