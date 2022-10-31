@@ -8,6 +8,6 @@ public:
             }
             end = max(end,i+nums[i]);
         }
-        return end>=nums.size()-1;
+        return true;
     }
 };
