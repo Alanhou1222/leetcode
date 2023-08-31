@@ -19,10 +19,7 @@ public:
                 j++;
             }
         }
-        for(int i = 0; i < canSeg.size(); i++)
-        {
-            cout << (int)canSeg[i] << " ";
-        }
+
         return canSeg.back();
     }
 };
